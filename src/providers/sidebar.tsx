@@ -1,7 +1,7 @@
 import { icons } from "antd/es/image/PreviewGroup";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import path from "path";
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import classname from "classnames";
 import { set } from "mongoose";
 
@@ -9,6 +9,8 @@ function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
   const [showMenu, setShowMenu] = React.useState(true);
+  const params = useParams();
+  const id = params.id;
 
   let adminsMenus: any = [
     {
@@ -21,7 +23,10 @@ function Sidebar() {
       name: "Lottories",
       path: "/admin/lotteries",
       icons: "ri-file-list-line",
-      isActive: pathname === "/admin/lotteries",
+      isActive:
+        pathname === "/admin/lotteries" ||
+        pathname === "/admin/lotteries/create" ||
+        pathname === `/admin/lotteries/edit/${id}`,
     },
     {
       name: "Tickets",

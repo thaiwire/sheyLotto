@@ -5,7 +5,12 @@ import { GetCurrentUserFormMongoDB } from "../../server-actions/users";
 connectMongoDB();
 
 export default async function Home() {
-  await GetCurrentUserFormMongoDB();
+  const response = await GetCurrentUserFormMongoDB();
+  // const { name, email, clerkUserID } = response.data;
 
-  return <div>Homepage</div>;
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col gap-3"></div>
+    </div>
+  );
 }

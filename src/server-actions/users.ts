@@ -1,3 +1,5 @@
+"use server";
+
 import { connectMongoDB } from "@/config/db";
 import UserModel from "@/models/user-model";
 import { currentUser, User } from "@clerk/nextjs/server";
